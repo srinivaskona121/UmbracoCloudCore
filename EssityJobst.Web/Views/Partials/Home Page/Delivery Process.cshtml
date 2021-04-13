@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var CountryNode = Model.Root();
+    var deliveryProcesslist = Model.Value<IEnumerable<IPublishedElement>>("deliveryProcess");
+    @*<p>@CountryNode.Value("brand")</p>
+    <p>@deliveryProcesslist.Count()</p>*@
+    
+    bool flag = (bool)CountryNode.Value("brand");
+    if(flag && deliveryProcesslist.Count() > 0)
+    {
+        <div class="delivery-pross">
+            <div class="container">
+                <div class="row">
+                @foreach(var delivery in deliveryProcesslist)
+                {
+                    var title = delivery.Value("imageTitle");
+                    var description = delivery.Value("imageDescription");
+                    var deliveryimg = delivery.Value<IPublishedContent>("imagePath") != null ?  delivery.Value<IPublishedContent>("imagePath").Url : "";
+                    <div class="col-md-3">
+                        <div class="delivery-box">
+                            <div class="g-circle">
+                                <img src="@deliveryimg" alt="@title" title="@title"/>
+                            </div>
+                            <h3>@title</h3>
+                            <p>@description</p>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    }
+}

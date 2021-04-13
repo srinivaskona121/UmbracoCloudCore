@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+<!--- Header code here ---->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 logo">
+                    @Html.Partial("Header/Logo")
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-serch" type="button"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                    <!--<div class="categories">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected> All Categories</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+
+                    </div>-->
+                </div>
+                <div class="col-md-4 right-pan">
+                    <div class="phone">
+                        <button data-toggle="modal" data-target="#exampleModalphone">
+                            <i class="bi bi-telephone-fill"></i>
+                        </button>
+                    </div>
+                    <div class="mail">
+                        <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    @Html.Partial("Header/CountryDropdown")                     
+                </div>
+            </div>
+        </div>
+    </div>

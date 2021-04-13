@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var parent = Model.Root();
+    var parentcountryflag = parent.Value<IPublishedContent>("countryFlag") != null ? parent.Value<IPublishedContent>("countryFlag").Url : "";
+    var countryshortName = parent.Value<string>("countryShortName");
+    var CurrentlanguageName = Model.AncestorOrSelf(2).Value<string>("languageShortName");
+    var languageId = Model.AncestorOrSelf(2).Id;
+    var RootNodes = Model.Root().SiblingsAndSelf();
+
+    <div class="country dropdown">
+        <a href="#"><img src="@parentcountryflag" alt="@parent.Value("pageName")" /> @CurrentlanguageName | @countryshortName <i class="bi bi-chevron-down"></i></a>
+        <ul class="sub">
+            @foreach (var item in RootNodes)
+            {
+                var rootcountrylanguage = item.DescendantOrSelf(2);
+                if (languageId != rootcountrylanguage.Id)
+                {
+                    var countryflag = item.Value<IPublishedContent>("countryFlag") != null ? item.Value<IPublishedContent>("countryFlag").Url : "";
+                    var shortName = item.Value<string>("countryShortName");                    
+                    var ClanguageName = rootcountrylanguage.Value<string>("languageShortName");
+                    <li>
+                        <a href="@rootcountrylanguage.Url"><img src="@countryflag" alt="@item.Value("pageName")" /> @ClanguageName | @shortName</a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+}

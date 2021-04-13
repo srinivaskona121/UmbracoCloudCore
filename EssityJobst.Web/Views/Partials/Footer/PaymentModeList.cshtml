@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var paymentModeList = Model.AncestorOrSelf(2).Value<IEnumerable<IPublishedElement>>("paymentModeList");
+    <div>
+        @foreach (var item in paymentModeList)
+        {
+            <img src="@(item.Value<IPublishedContent>("imagePath").Url)" alt="@item.Value("imageTitle")" title="@item.Value("imageTitle")"/>
+        }
+    </div>
+}

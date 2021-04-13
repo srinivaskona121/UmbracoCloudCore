@@ -1,0 +1,57 @@
+﻿@using Umbraco.Core.Models.PublishedContent;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var parent = @Model.AncestorOrSelf(1); 
+    var homePg = @Model.Root();
+}
+@{
+var items = Model.AncestorOrSelf(2).Value<IEnumerable<IPublishedElement>>("newMenuCollection");
+    
+  <!--- Navbar code here ---->
+    <div class="topNav">
+        <div class="container col-pd-0">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                      @{
+                        foreach (var item in items)
+                        {
+                            var secondNav = item.Value<IEnumerable<IPublishedElement>>("menuCollectionList");
+                            bool flag = (bool)parent.Value("brand");
+                            bool IsEcommerce = (bool)item.Value("ecommerceFlag");
+                            var secondNavCount = secondNav.Count();
+                            if(secondNavCount > 0)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @item.Value("menuName")
+                                    </a>
+                                    @if(flag)
+                                    {
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            @foreach (var nav in secondNav)
+                                            {
+                                                <a class="dropdown-item" href="@nav.Value("menuUrl")">@nav.Value("menuTitle")</a>
+                                            }
+                                        </div>
+                                    }
+                                </li>    
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">@item.Value("menuName")</a>
+                                </li>
+                            }
+                        }
+                      }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+}

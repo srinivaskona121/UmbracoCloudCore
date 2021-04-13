@@ -1,0 +1,15 @@
+﻿@using Umbraco.Core.Models.PublishedContent;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+var IageDescription = Model.AncestorOrSelf(2).Value<IEnumerable<IPublishedElement>>("imageDescription");
+    
+    foreach (var item in IageDescription)
+    {
+        <div class="col-md-4 col-pd-0">
+            <div>
+                <img src="@(item.Value<IPublishedContent>("imagePath").Url)" alt="@item.Value("imageTitle")" title="@item.Value("imageTitle")"/>
+            </div>
+            @item.Value("imageDescription")
+        </div>
+    }
+}

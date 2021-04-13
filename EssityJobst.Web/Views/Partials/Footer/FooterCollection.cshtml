@@ -1,0 +1,24 @@
+﻿@using Umbraco.Core.Models.PublishedContent;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+  
+    var footerlist = Model.AncestorOrSelf(2).Value<IEnumerable<IPublishedElement>>("footerList");
+    int i = 0;
+    foreach (var item in footerlist)
+    {
+        string cls = i == 0?"col-md-2 col-lt-50":"col-md-3 col-lt-50";
+        <div class="@cls">
+            <h4>@item.Value("footerTitle")<h4>
+            @{
+                var secondNav = item.Value<IEnumerable<IPublishedElement>>("footerUrlCollection");//<IEnumerable<IPublishedContent>>item.Value("menuCollectionList");
+                <ul class="mrt-24">
+                    @foreach (var nav in secondNav)
+                    {
+                        <li><a href="@nav.Value("menuUrl")">@nav.Value("menuTitle")</a></li>
+                    }
+                </ul>
+            }
+        </div>
+        i = i+1; 
+    }
+}

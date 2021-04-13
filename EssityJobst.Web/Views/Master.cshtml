@@ -1,0 +1,59 @@
+﻿@using Umbraco.Core.Models.PublishedContent;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+@* the fun starts here *@
+
+<!DOCTYPE HTML>
+<!--
+    Retrospect by TEMPLATED
+    templated.co templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@Model.Value("pageName")</title>
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />   
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/scripts/Home.js"></script>
+        <script src="/scripts/MultiSlider.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid col-pd-0">
+            @Html.Partial("Header/Header")
+            @Html.Partial("Header/Menu")
+            @RenderBody()
+
+    <!--- Footer code here ---->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    @Html.Partial("Footer/JobSTInfo")
+                    @Html.Partial("Footer/FooterCollection")
+                    <div class="col-md-3 col-pd-0">
+                        @Html.Partial("Footer/PaymentModeList")
+                        @Html.Partial("Footer/SocialMediaCollection")
+                    </div>
+                </div>
+                <hr>
+                @Html.Partial("Footer/FooterImageDescription")
+            </div>
+        </div>
+    
+    
+  </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+
+    var socialMediaCollection = Model.AncestorOrSelf(2).Value<IEnumerable<IPublishedElement>>("socialMediaList");
+    <div class="mrt-12">
+        @foreach (var item in socialMediaCollection)
+        {
+            <img src="@(item.Value<IPublishedContent>("imagePath").Url)" alt="@item.Value("imageTitle")" title="@item.Value("imageTitle")"/>
+        }
+    </div>
+}

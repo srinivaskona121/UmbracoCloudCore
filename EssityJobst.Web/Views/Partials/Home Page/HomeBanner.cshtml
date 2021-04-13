@@ -1,0 +1,105 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+
+    @*bannerProductImages*@
+    var bannerImages = Model.Value<IEnumerable<IPublishedElement>>("bannerImages");
+    
+<!--- Carousel code here ---->
+        <div id="home-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                @for (int i = 0; i < bannerImages.Count() ; i++) 
+                {
+                  if(i == 0)
+                  {
+                    <li data-target="#home-carousel" data-slide-to="@i" class="active"></li>
+                  }
+                  else
+                  {
+                    <li data-target="#home-carousel" data-slide-to="@i"></li>
+                  }
+                }
+            </ul>
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                @{
+                    int j = 0;
+                    foreach(var banner in bannerImages)
+                    {
+                        var title = banner.Value("bannerTitle");
+                        var description = banner.Value("bannerDescription");
+                        var bannerimg = banner.Value<IPublishedContent>("bannerImage") != null ?  banner.Value<IPublishedContent>("bannerImage").Url : "";
+                        var bannerProductList = banner.Value<IEnumerable<IPublishedElement>>("bannerProductImages");
+                        var bannerbuttonText = banner.Value("bannerButtonText");
+                        var bannerRedirectionUrl = banner.Value("bannerRedirectionUrl");
+                        if(j == 0)
+                        {
+                            j = j+1;
+                            <div class="carousel-item active">                   
+                                <img src="@bannerimg" alt="@title" title= "@title" />
+                                <div class="carousel-caption product-section">
+                                    <div class="men-img">
+                                        <img src="images/Group@3x.png" alt="" />
+                                    </div>
+                                    <p>@title</p>
+                                    <h1>@Html.Raw(description)</h1>
+                                    @if(bannerProductList.Count()>1)
+                                    {
+                                        <div class="product-img mrt-24">
+                                            @foreach(var product in bannerProductList)
+                                            {
+                                                var producttitle = product.Value("imageTitle");
+                                                var productimg = product.Value<IPublishedContent>("imagePath") != null ?  product.Value<IPublishedContent>("imagePath").Url : "";
+                                                var productUrl = product.Value("imageUrl");
+                                                <a href="@productUrl"><img src="@productimg" alt="@producttitle" title="@producttitle"/></a>    
+                                            }
+                                         </div>
+                                    }
+                                    @if(!String.IsNullOrEmpty(bannerbuttonText.ToString()))
+                                    {
+                                        <a class="btn-org" href="@bannerRedirectionUrl">@bannerbuttonText</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <img src="@bannerimg" alt="@title" title= "@title" />
+                                <div class="carousel-caption product-section">
+                                    <div class="men-img">
+                                        <img src="images/Group@3x.png" alt="" />
+                                    </div>
+                                    <p>@title</p>
+                                    <h1>@Html.Raw(description)</h1>
+                                    @if(bannerProductList.Count()>1)
+                                    {
+                                        <div class="product-img mrt-24">
+                                            @foreach(var product in bannerProductList)
+                                            {
+                                                var producttitle = product.Value("imageTitle");
+                                                var productimg = product.Value<IPublishedContent>("imagePath") != null ?  product.Value<IPublishedContent>("imagePath").Url : "";
+                                                var productUrl = product.Value("imageUrl");
+                                                <a href="@productUrl"><img src="@productimg" alt="@producttitle" title="@producttitle"/></a>    
+                                            }
+                                         </div>
+                                    }
+                                    @if(!String.IsNullOrEmpty(bannerbuttonText.ToString()))
+                                    {
+                                        <a class="btn-org" href="@bannerRedirectionUrl">@bannerbuttonText</a>
+                                    }
+                                    </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#home-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#home-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+}

@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    var countryNode = @Model.AncestorOrSelf(1);
+    var language = @Model.AncestorOrSelf(2);
+    <a href="@language.Url">
+        <img src="@(countryNode.Value<IPublishedContent>("logoImage").Url)"/>
+    </a>
+}
