@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "EssityJobst.Web", "EssityJobst.Web\", "{17858E11-02D6-4E30-B32C-53A566D492D6}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_4017"
+		Debug.AspNetCompiler.PhysicalPath = "EssityJobst.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4017\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_4017"
+		Release.AspNetCompiler.PhysicalPath = "EssityJobst.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4017\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "4017"
+		SlnRelativePath = "EssityJobst.Web\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{BC06DA93-93B3-4F85-AA37-0F31943C417E} = {BC06DA93-93B3-4F85-AA37-0F31943C417E}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EssityJobst.Core", "EssityJobst.Core\EssityJobst.Core.csproj", "{BC06DA93-93B3-4F85-AA37-0F31943C417E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17858E11-02D6-4E30-B32C-53A566D492D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17858E11-02D6-4E30-B32C-53A566D492D6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC06DA93-93B3-4F85-AA37-0F31943C417E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC06DA93-93B3-4F85-AA37-0F31943C417E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC06DA93-93B3-4F85-AA37-0F31943C417E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC06DA93-93B3-4F85-AA37-0F31943C417E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6D554B9-2AB6-453F-BAFF-4109BD028136}
+	EndGlobalSection
+EndGlobal
